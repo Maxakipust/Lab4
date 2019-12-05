@@ -1,3 +1,5 @@
+import java.sql.SQLOutput;
+
 public class WordWrap {
     final int lineLength;
     final String[] words;
@@ -29,13 +31,16 @@ public class WordWrap {
                 extraSpace[i][j] = extraSpace[i][j-1] - words[j].length()-1;
             }
         }
-
+        System.out.println("Extra Space");
+        printArr(extraSpace);
         //calculate the square of the cost of the line
         for(int i =0; i< extraSpace.length; i++){
             for(int j = i; j<extraSpace[i].length; j++){
                 extraSpace[i][j] = cleanSquareNum(extraSpace[i][j], j);
             }
         }
+        System.out.println("Clean Extra Space");
+        printArr(extraSpace);
 
         Integer totalCost[] = new Integer[words.length+1];
         Integer solution[] = new Integer[words.length+1];
@@ -50,8 +55,14 @@ public class WordWrap {
                 }
             }
         }
+        System.out.println("totalCost");
+        printArr(totalCost);
+        System.out.println("solution");
+        printArr(solution);
 
         getSolution(solution, words.length);
+        System.out.println("lineNums");
+        printArr(lineNums);
         return lineNums;
     }
 
@@ -72,6 +83,22 @@ public class WordWrap {
         }
         //otherwise square the number
         return num*num;
+    }
+
+    public void printArr(Integer[][] arr){
+        for(int i = 0;i<arr.length; i++){
+            for(int j = 0; j<arr[i].length; j++){
+                System.out.print(arr[i][j]+", ");
+            }
+            System.out.println();
+        }
+    }
+
+    public void printArr(Integer[] arr){
+        for(int i = 0; i< arr.length; i++){
+            System.out.print(arr[i]+", ");
+        }
+        System.out.println();
     }
 
     /**

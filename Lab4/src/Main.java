@@ -16,9 +16,11 @@ public class Main {
         String[] input = getInput(args);
 
         WordWrap ww = new WordWrap(lineSize, input);
+        Long start = System.currentTimeMillis();
         Integer[] lines = ww.solve();
+        Long end = System.currentTimeMillis();
 
-        System.out.println("solved using DP");
+        System.out.println("solved in "+((end-start)/1000.0) +" seconds");
         printResult(lines, input);
     }
 
@@ -52,6 +54,9 @@ public class Main {
                 BufferedReader reader = new BufferedReader(new FileReader(f));
                 String line;
                 while( (line = reader.readLine())!= null){
+                    line.replaceAll("\n","");
+                    line.replaceAll("\r\n", "");
+                    line.trim();
                     String[] words = line.split(" ");
                     in.addAll(Arrays.asList(words));
                 }
