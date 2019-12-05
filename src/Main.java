@@ -7,7 +7,11 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Main {
-    public static void main(String[] args) throws FileNotFoundException {
+    /**
+     * main entry point to the program
+     * @param args a list of args for the program. See readme for more info
+     */
+    public static void main(String[] args) {
         int lineSize = Integer.parseInt(args[0]);
         String[] input = getInput(args);
 
@@ -18,6 +22,11 @@ public class Main {
         printResult(lines, input);
     }
 
+    /**
+     * prints the result of the Word Wrap
+     * @param lines the list of how many words go on each line gotten from the word wrap
+     * @param input the list of words gotten as input
+     */
     public static void printResult(Integer[] lines, String[] input){
         int word = 0;
         for(int line = 1; line < lines.length && lines[line]!=null; line++){
@@ -30,6 +39,11 @@ public class Main {
         }
     }
 
+    /**
+     * gets the input from the user. it checks if the input is a file and uses that if it is, if its not it uses the raw input as input
+     * @param args the program args
+     * @return a list of words to use
+     */
     public static String[] getInput(String[] args){
         if(args.length == 2){
             File f = new File(args[1]);

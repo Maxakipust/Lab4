@@ -55,6 +55,12 @@ public class WordWrap {
         return lineNums;
     }
 
+    /**
+     * calulates the cost of the line by squaring it
+     * @param num the remaining spaces in the line
+     * @param line the line number
+     * @return the cost of the line
+     */
     public Integer cleanSquareNum(int num, int line){
         if(num < 0){
             //if we cant fit the number on the line then we return the max
